@@ -110,7 +110,7 @@ export const getByTamanho = async(req:Request, res: Response ) => {
         }
 
         const shoes = await CalcadoRepository.getBySize(Number(tamanho))
-        return res.status(200).json(tamanho)
+        return res.status(200).json(shoes)
     }
     catch(error){
         return res.status(400).json({
@@ -130,7 +130,7 @@ export const getByMarca = async(req:Request, res: Response ) => {
         }
 
         const shoes = await CalcadoRepository.getByMarca(marca)
-        return res.status(200).json(marca)
+        return res.status(200).json(shoes)
     }
     catch(error){
         return res.status(400).json({
