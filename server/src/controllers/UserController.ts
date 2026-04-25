@@ -1,10 +1,15 @@
+// No controller basicamente damos a interação devida do que está escrito no Repositories com o banco de dados
+// basicamente um declara funções e o outro realmente as utiliza.
 import { Request, Response } from "express";
 import prisma from "@database";
 import Message from "src/global/Message";
 import CalcadoRepository from "../repositorie/UserRepositorie";
+
 export const createProduct = async (req:Request, res:Response) =>{
     try{
+        // Pegando tudo que irá ser escrito no Body.
         const data = req.body;
+        // Verificação para ver se está com todas as infos.
         if (!data.nome_produto || !data.cor || !data.marca || !data.tamanho || !data.preco || !data.quantidade_em_estoque)
             {
                 return res.status(404).json({
@@ -32,6 +37,7 @@ export const readAllProducts = async(req: Request, res: Response) => {
     try{
         const shoes = await CalcadoRepository.readAllProducts();
 
+        // Verificação pra se caso nada seja encontrado.
         if(!shoes){
             return res.status(404).json({
                 message:"Nenhum produto criado ainda."
@@ -50,7 +56,9 @@ export const readAllProducts = async(req: Request, res: Response) => {
 
 export const updateProduct = async(req: Request, res: Response) => {
     try{
+        // ID é parâmetro.
         const {id} = req.params;
+        // Enquanto data é conteúdo do body.
         const data = req.body;
 
         const shoe = await CalcadoRepository.updateProduct(Number(id), data);
@@ -71,6 +79,7 @@ export const updateProduct = async(req: Request, res: Response) => {
 export const deleteProduct = async(req: Request, res: Response) => {
     try{
         const {id} = req.params;
+        // Filtrando pra ver se o ID desejado existe.
         if(!id){
             return res.status(404).json({
                 message: "Produto não encontrado."
@@ -135,11 +144,14 @@ export const countOfPares = async (req:Request, res: Response) => {
     try{
         const shoes = await CalcadoRepository.countOfPares();
 
+        // Basicamente vê se a conta deu algo ou deu nada.
         const total = shoes._sum.quantidade_em_estoque || 0;
 
         if(total == 0){
             return res.status(200).json({
                 message:"Estoque vazio",
+                // Achei legal pois após pesquisar descobri que facilmente posso editar o json do jeito que eu quero.
+                // Eu tinha certeza que esse message era uma palavra reservada, bom saber do controle que temos.
                 total_estoque: 0
             })
         }
