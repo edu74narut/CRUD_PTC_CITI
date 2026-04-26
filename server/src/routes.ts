@@ -9,6 +9,7 @@ routes.post("/shoes", createProduct);
 routes.get("/shoes", readAllProducts);
 routes.patch("/shoes/:id", updateProduct);
 routes.delete("/shoes/:id", deleteProduct);
+// Teria como eu deixar a url mais parecida? fazer ele ser sensível ao dado?
 routes.get("/shoes/:tamanho", getByTamanho);
 routes.get("/shoe/:marca", getByMarca);
 routes.get("/total/sapatos", countOfPares);

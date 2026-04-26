@@ -1,6 +1,5 @@
 // Utilizando Repositorie por motivos de organização e encapsulamento do código
 import prisma from "@database"
-import { deleteProduct } from "src/controllers/UserController"
 
 class CalcadoRepository{
     // Passando todos os dados como parâmetro, necessário para se criar
