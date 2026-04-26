@@ -1,8 +1,6 @@
 // No controller basicamente damos a interação devida do que está escrito no Repositories com o banco de dados
 // basicamente um declara funções e o outro realmente as utiliza.
 import { Request, Response } from "express";
-import prisma from "@database";
-import Message from "src/global/Message";
 import CalcadoRepository from "../repositorie/UserRepositorie";
 
 export const createProduct = async (req:Request, res:Response) =>{
