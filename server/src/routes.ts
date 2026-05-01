@@ -1,6 +1,6 @@
 // Aqui configuramos as rotas que serão utilizadas, cada uma é definida por uma função.
 import express from "express";
-import {  countOfPares, createProduct, deleteProduct, getByMarca, getByTamanho, readAllProducts, updateProduct } from "./controllers/UserController";
+import {  countOfPares, createProduct, deleteProduct, getByMarca, getByTamanho, readAllProducts, updateProduct } from "./controllers/ProductController";
 
 
 const routes = express.Router();

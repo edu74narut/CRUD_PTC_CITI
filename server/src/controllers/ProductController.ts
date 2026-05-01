@@ -1,7 +1,7 @@
 // No controller basicamente damos a interação devida do que está escrito no Repositories com o banco de dados
 // basicamente um declara funções e o outro realmente as utiliza.
 import { Request, Response } from "express";
-import CalcadoRepository from "../repositorie/UserRepositorie";
+import CalcadoRepository from "../repositorie/ProductRepositorie";
 
 export const createProduct = async (req:Request, res:Response) =>{
     try{
